@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="width: 50%; margin: auto; padding: 20px;">
+    <table class="table table-primary table-striped">
+        <thead>
+          <tr>
+            <th scope="col">isim</th>
+            <th scope="col">soy isim</th>
+            <th scope="col">yaş</th>
+            <th scope="col">cinsiyet</th>
+            <th scope="col">profilfoto</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+                <td>
+                    <img src="{{ url_for('static', filename='uploads/' + user[4]) }}" alt="User Image" style="width: 50px; height: 50px;">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+      <form action="{{ url_for('user_add') }}" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+    
+        <div class="mb-3">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", id="username") }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.surname.label(class="form-label") }}
+            {{ form.surname(class="form-control", id="surname") }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.age.label(class="form-label") }}
+            {{ form.age(class="form-control", id="age") }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.gender.label(class="form-label") }}
+            {{ form.gender(class="form-select", id="gender") }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.file.label(class="form-label") }}
+            {{ form.file(class="form-control", id="file") }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+myenv/
+./myenv
+myenv/*
+
+
+#db
+*.db
+*.sql
+*.postgre
+*.mysql
+
+#cache
+__pycache__/*
+__pycache__/
+
