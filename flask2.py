@@ -39,7 +39,7 @@ users_all = [
 @app.route('/')
 def hello_world():
     #abort(404)
-    return 'Hello, World!'
+    return render_template('home.html')
 
 @app.route('/index')
 def index():
